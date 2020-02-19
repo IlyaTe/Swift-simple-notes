@@ -11,7 +11,10 @@ import CoreData
 
 class AddViewController: UIViewController {
 
+
+    @IBOutlet weak var buttonDone: UIBarButtonItem!
     @IBOutlet weak var textNote: UITextView!
+    
     var note: Note!
     var isEdit: Bool!
     var managedContext: NSManagedObjectContext!
@@ -23,24 +26,44 @@ class AddViewController: UIViewController {
             managedContext = delegate.persistentContainer.viewContext
         }
         
-        if let note = note {
-            isEdit = true
-            textNote.text = note.textNode
-        } else {
-            isEdit = false
-            textNote.text = ""
-        }
-        
-        textNote.becomeFirstResponder()
+        initialValues()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func viewWillDisappear(_ animated: Bool) {
         if !isEdit {
             note = Note(context: managedContext)
         }
         
         note.textNode = textNote.text
-        note.title = textNote.text
+    
+        var range: Range<String.Index>
+        if textNote.text.count > 100 {
+            range = textNote.text.startIndex..<textNote.text.index(textNote.text.startIndex, offsetBy: 100)
+        } else {
+            range = textNote.text.startIndex..<textNote.text.endIndex
+        }
+        note.title = String(textNote.text[range])
+        print(range)
         note.date = Date()
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+          print("Error: \(error), userInfo \(error.userInfo)")
+        }
+    }
+    
+    @IBAction func done() {
+        textNote.resignFirstResponder()
+    }
+    
+    func initialValues() {
+        if let note = note {
+            isEdit = true
+            textNote.text = note.textNode
+        } else {
+            isEdit = false
+            textNote.becomeFirstResponder()
+        }
     }
 }

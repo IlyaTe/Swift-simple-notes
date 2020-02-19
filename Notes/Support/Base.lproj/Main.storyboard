@@ -99,24 +99,25 @@
                         <viewLayoutGuide key="safeArea" id="Fgp-gQ-Fbk"/>
                     </view>
                     <navigationItem key="navigationItem" id="rvq-Tf-y3q">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="VPy-hx-dvX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VPy-hx-dvX">
                             <connections>
-                                <segue destination="hcN-xx-R12" kind="unwind" unwindAction="unwindToNotesWithSegue:" id="FYe-jI-Uzf"/>
+                                <action selector="done" destination="LFi-P2-Kh1" id="SlR-xG-XOp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonDone" destination="VPy-hx-dvX" id="Nau-Hg-53z"/>
                         <outlet property="textNote" destination="A4x-gE-ha4" id="jUn-bY-pnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZgZ-mN-2Z1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="hcN-xx-R12" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1802.8985507246377" y="0.6696428571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7GG-66-Hz5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVU-fx-jzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ld0-mS-vJ5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2r4-S8-WA0">
@@ -128,12 +129,11 @@
                         <segue destination="nb4-PJ-EmM" kind="relationship" relationship="rootViewController" id="nEo-iI-OT4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JVU-fx-jzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-33.333333333333336" y="0.6696428571428571"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vNf-XN-YMV"/>
+        <segue reference="uxO-10-ffP"/>
     </inferredMetricsTieBreakers>
 </document>
