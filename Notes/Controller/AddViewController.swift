@@ -30,27 +30,8 @@ class AddViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if !isEdit {
-            note = Note(context: managedContext)
-        }
-        
-        note.textNode = textNote.text
-    
-        var range: Range<String.Index>
-        if textNote.text.count > 100 {
-            range = textNote.text.startIndex..<textNote.text.index(textNote.text.startIndex, offsetBy: 100)
-        } else {
-            range = textNote.text.startIndex..<textNote.text.endIndex
-        }
-        note.title = String(textNote.text[range])
-        print(range)
-        note.date = Date()
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-          print("Error: \(error), userInfo \(error.userInfo)")
-        }
+        dataRecord()
+        saveToCD()
     }
     
     @IBAction func done() {
@@ -64,6 +45,39 @@ class AddViewController: UIViewController {
         } else {
             isEdit = false
             textNote.becomeFirstResponder()
+        }
+    }
+    
+    func dataRecord() {
+        guard textNote.text.isEmpty == false else {
+            if isEdit {
+                managedContext.delete(note)
+                saveToCD()
+            }
+            return
+        }
+        if !isEdit {
+                note = Note(context: managedContext)
+        }
+        
+        note.textNode = textNote.text
+        
+        var range: Range<String.Index>
+        if textNote.text.count > 100 {
+            range = textNote.text.startIndex..<textNote.text.index(textNote.text.startIndex, offsetBy: 100)
+        } else {
+            range = textNote.text.startIndex..<textNote.text.endIndex
+        }
+        note.title = String(textNote.text[range])
+        
+        note.date = Date()
+    }
+    
+    func saveToCD() {
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+          print("Error: \(error), userInfo \(error.userInfo)")
         }
     }
 }

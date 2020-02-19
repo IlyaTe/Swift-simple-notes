@@ -40,6 +40,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="PMR-KC-j2Z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZPx-uJ-fbd" secondAttribute="leading" constant="20" symbolic="YES" id="KKU-Wg-XmD"/>
                                         <constraint firstItem="N1v-g6-mdp" firstAttribute="top" secondItem="ZPx-uJ-fbd" secondAttribute="top" constant="11" id="LeR-Z2-R78"/>
                                         <constraint firstAttribute="bottom" secondItem="PMR-KC-j2Z" secondAttribute="bottom" constant="11" id="SVs-lt-Vim"/>
                                         <constraint firstAttribute="trailing" secondItem="PMR-KC-j2Z" secondAttribute="trailing" constant="20" id="U3C-Br-JGe"/>
@@ -117,7 +118,6 @@
         <!--Navigation Controller-->
         <scene sceneID="7GG-66-Hz5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JVU-fx-jzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ld0-mS-vJ5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2r4-S8-WA0">
@@ -129,6 +129,7 @@
                         <segue destination="nb4-PJ-EmM" kind="relationship" relationship="rootViewController" id="nEo-iI-OT4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVU-fx-jzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-33.333333333333336" y="0.6696428571428571"/>
         </scene>
